@@ -20,5 +20,13 @@ const AnjingSchema = new Schema({
     userId : {
         type : Schema.Types.ObjectId,
         ref : 'User'
+    },
+    image_url : {
+        type : String
     }
 })
+
+const Anjing = mongoose.model('Anjing', AnjingSchema)
+
+module.exports = Anjing;
+
