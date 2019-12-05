@@ -15,7 +15,7 @@ const AnjingSchema = new Schema({
         type : String
     },
     price : {
-        type : String
+        type : Number
     },
     sex : {
         type : String

@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const gcsUpload = require('gcs-upload')
-const anjingController = require('../controllers/anjing')
+const AnjingController = require('../controllers/anjing')
 
 const upload = gcsUpload({  
     limits: {
@@ -12,7 +12,8 @@ const upload = gcsUpload({
     }
   })
 
-router.post('/create', upload.array('file'),anjingController.createAnjing)
+router.post('/create', AnjingController.createAnjing)
+
   
 
 module.exports = router
