@@ -3,6 +3,10 @@ const Schema = mongoose.Schema
 const { hashPassword } = require('../helpers/passwordGenerator')
 
 const UserSchema = new Schema({
+    username : {
+        type: String,
+        required: [true, 'username required']
+    },
     email: {
         type: String,
         required: [true, 'Email required'],
@@ -12,6 +16,9 @@ const UserSchema = new Schema({
     password : {
         type: String,
         required : [true, 'password is required'],
+    },
+    profilePicture : {
+      type : String,
     }
 })
 
