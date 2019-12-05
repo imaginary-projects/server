@@ -5,7 +5,10 @@ const AnjingSchema = new Schema({
     name : {
         type : String
     },
-    jenis : {
+    type : {
+        type : String
+    },
+    description : {
         type : String
     },
     age : {
