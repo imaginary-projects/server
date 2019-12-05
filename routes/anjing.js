@@ -12,8 +12,13 @@ const upload = gcsUpload({
     }
   })
 
-router.post('/create', AnjingController.createAnjing)
-
   
+router.post('/create', upload.single('file'),AnjingController.createAnjing)
+router.get('/filter', AnjingController.filterAnjing)
+router.get('/', AnjingController.showAnjing)
+router.get('/:id', AnjingController.detailAnjing)
+router.delete('/:id', AnjingController.deleteAnjing)  
+router.put('/:id', upload.single('file'),AnjingController.updateAnjing)
+
 
 module.exports = router
