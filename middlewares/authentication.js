@@ -8,8 +8,7 @@ module.exports = {
           User.findOne({ _id : decodeToken.id })
         .then(user => {
         if(user) {
-            console.log(user)
-            req.loggedUser = decodeToken
+            req.loggedUser = user
             next()
           } else {
             next({ status: 403, message: 'user not found, authentication failed' })

@@ -10,7 +10,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const routes = require('./routes/index')
 const { errorHandler } = require('./middlewares/errorHandling')
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 mongoose.connect(mongoUrl, { useCreateIndex: true,useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true }, function(err) {
   if(err) console.log('failed connect database')
