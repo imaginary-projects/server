@@ -1,6 +1,7 @@
 const anjing = require('../models/anjing')
 
 class AnjingController {
+
     static createAnjing (req,res,next){
         anjing.create({
             name : req.body.name,
@@ -58,6 +59,28 @@ class AnjingController {
             })
             .catch(next)
     }
+
+
+    static filterAnjing(req,res,next)
+      {
+          const { sex, minPrice, maxPrice } = req.body
+
+          let query = {}
+          if(sex) query.sex = sex
+          if(minPrice && maxPrice) query.price = {$gte: Number(minPrice), $lte: Number(maxPrice) }
+          else if(minPrice) query.price = {$gte: Number(minPrice)}
+          else if(maxPrice) query.price = {$lte: Number(maxPrice)}
+          console.log( 'query  inih', query )
+
+          anjing.find( query )
+          .then(result=>{
+              res.status(200).json(result)
+          })
+          .catch(next)
+
+      }
+
+
 }
 
 module.exports = AnjingController
