@@ -66,6 +66,7 @@ class AnjingController {
 
     static filterAnjing(req,res,next)
       {
+          console.log(req.body)
           const { sex, minPrice, maxPrice } = req.body
 
           let query = {}
