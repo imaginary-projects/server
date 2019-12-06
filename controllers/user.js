@@ -6,6 +6,7 @@ class UserController {
     static register (req,res,next){
         console.log(req.body.email, req.body.password)
         User.create({
+            username : req.body.username,
             email : req.body.email,
             password: req.body.password
         })

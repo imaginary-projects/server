@@ -3,14 +3,15 @@ const anjing = require('../models/anjing')
 class AnjingController {
 
     static createAnjing (req,res,next){
+        console.log(req.body)
         anjing.create({
             name : req.body.name,
             type : req.body.type,
             description: req.body.description,
             age : req.body.age,
             price : req.body.price,
-            sex : req.body.sex,
-            userId : req.body.loggedUser._id,
+            sex : req.body.gender,
+            userId : req.loggedUser._id,
             image_url : req.body.file
         })
             .then( data =>{
@@ -38,6 +39,7 @@ class AnjingController {
 
     static showAnjing(req,res,next){
         anjing.find()
+            .populate('userId')
             .then(data =>{
                 res.status(200).json(data)
             })
@@ -45,7 +47,8 @@ class AnjingController {
     }
 
     static detailAnjing(req,res,next){
-        anjing.findOne({_id:req.params.id}).populate('userId')
+        anjing.findOne({_id:req.params.id})
+            .populate('userId')
             .then( data =>{
                 res.status(200).json(data)
             })

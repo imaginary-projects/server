@@ -6,8 +6,8 @@ module.exports = {
       try {
           const decodeToken = verifytoken(req.headers.token)
           User.findOne({ _id : decodeToken.id })
-        .then(user => {
-        if(user) {
+          .then(user => {
+            if(user) {
             req.loggedUser = user
             next()
           } else {
@@ -16,6 +16,7 @@ module.exports = {
         })
         .catch(next)
     } catch(err) {
+      console.log(err)
       next({ status: 403, message: err })
     }
   }
